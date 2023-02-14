@@ -19,7 +19,7 @@ db.once("open", function () {
   console.log("Mongoose is connected");
 });
 
-const PORT = process.env.PORT || 3002;
+const PORT = process.env.PORT || 5005;
 
 app.get("/", (request, response) => {
   response.status(200).send("Hi from the server!");
