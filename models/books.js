@@ -10,6 +10,6 @@ const bookSchema = new Schema({
   status: {type: Boolean, require: true}
 });
 
-const BookModel = mongoose.model('Book', bookSchema);
+const Book = mongoose.model('Book', bookSchema);
 
-module.exports = BookModel;
+module.exports = Book;
