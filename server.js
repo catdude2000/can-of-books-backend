@@ -21,16 +21,42 @@ db.once("open", function () {
 
 const PORT = process.env.PORT || 5005;
 
+const Book = require('./models/books.js');
+
 app.get("/", (request, response) => {
   response.status(200).send("Hi from the server!");
 });
 
 app.get("/books", getBooks);
+app.post('/books', postBooks);
+app.delete('/books/:id', deleteBooks);
 
 async function getBooks(request, response, next) {
   try {
     let results = await Book.find();
     response.status(200).send(results);
+  } catch (error) {
+    next(error);
+  }
+}
+
+
+async function postBooks(request, response, next){
+  console.log('coming in on:', request.body);
+  try {
+    let createBook = await Book.create(request.body);
+    response.status(200).send(createBook);
+  } catch (error) {
+    next(error);
+  }
+}
+
+async function deleteBooks(request, response, next){
+  console.log('id', request.params.id);
+  try {
+    let id = request.params.id;
+    await Book.findByIdAndDelete(id);
+    response.status(200).send('Book was deleted');
   } catch (error) {
     next(error);
   }
