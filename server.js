@@ -26,6 +26,8 @@ app.get("/", (request, response) => {
 });
 
 app.get("/books", getBooks);
+app.post("/books", postBooks);
+app.delete("/books/:id", deleteBooks);
 
 async function getBooks(request, response, next) {
   try {
@@ -33,6 +35,27 @@ async function getBooks(request, response, next) {
     response.status(200).send(results);
   } catch (error) {
     next(error);
+  }
+}
+
+async function postBooks(request, response, next){
+  console.log('coming in on: ', request.body);
+  try {
+    let createBook = await Book.create(request.body);
+    response.status(200).send(createBook);
+  } catch (error) {
+    next (error);
+  }
+}
+
+async function deleteBooks (request, response, next) {
+  console.log('id', request.params.id);
+  try {
+    let id = request.params.id;
+    await Book.findByIdAndDelete(id);
+    response.status(200).send('Book was deleted.');
+  } catch(error) {
+    
   }
 }
 
