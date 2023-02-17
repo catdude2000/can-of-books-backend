@@ -1,11 +1,10 @@
 "use strict";
-
 require("dotenv").config();
 const express = require("express");
 const cors = require("cors");
-
 const app = express();
 
+app.use(express.json());
 app.use(cors());
 
 const mongoose = require("mongoose");
@@ -37,7 +36,6 @@ async function getBooks(request, response, next) {
     next(error);
   }
 }
-
 
 async function postBooks(request, response, next){
   console.log('coming in on:', request.body);
