@@ -21,8 +21,6 @@ db.once("open", function () {
 
 const PORT = process.env.PORT || 5005;
 
-const Book = require('./models/books.js');
-
 app.get("/", (request, response) => {
   response.status(200).send("Hi from the server!");
 });
