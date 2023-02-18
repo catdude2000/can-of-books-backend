@@ -8,12 +8,12 @@
   },
   "author": "Katie and Mike",
   "license": "MIT",
-    "dependencies": {
-      "axios": "^1.3.2",
-      "cors": "^2.8.5",
-      "dotenv": "^16.0.3",
-      "express": "^4.18.2",
-      "mongoose": "^6.9.1",
-      "nodemon": "^2.0.20"
-    }
+  "dependencies": {
+    "axios": "^1.3.2",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "mongoose": "^6.9.2",
+    "nodemon": "^2.0.20"
+  }
 }
