@@ -35,10 +35,11 @@ async function updateBooks(request, response, error) {
   let bookData = request.body;
   console.log(id, bookData);
   try {
-    let updateBook = await Book.findByIdAndUpdate(id, bookData, {
+    let updatedBook = await Book.findByIdAndUpdate(id, bookData, {
       new: true,
       overwrite: true,
     });
+    response.200.send(updatedBook)
   } catch (error) {
     next(error);
   }
