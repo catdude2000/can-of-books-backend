@@ -39,13 +39,11 @@ async function updateBooks(request, response, error) {
       new: true,
       overwrite: true,
     });
-    response.200.send(updatedBook)
+    response.status(200).send(updatedBook)
   } catch (error) {
     next(error);
   }
 }
-
-
 
 async function getBooks(request, response, next) {
   try {
